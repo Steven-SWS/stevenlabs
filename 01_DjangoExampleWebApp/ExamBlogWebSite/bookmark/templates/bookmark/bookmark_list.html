@@ -1,0 +1,20 @@
+{% extends "base_bookmark.html" %}
+<!-- bookmark_list.html -->
+{## comment: http://localhost:8000/bookmark/favorite/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Bookmark List</h3>
+        <br>
+    </p>
+    <br>
+
+    <ul>
+        {% for bookmark in object_list %}
+            <li><a href="{% url 'bookmark:bookmark_detail' bookmark.id %}">{{ bookmark.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <br><br>
+
+{% endblock content %}

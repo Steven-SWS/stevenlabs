@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+<!-- base_eqpInfo.html -->
+{## comment: http://localhost:8000/eqpInfo/ ##}
+
+{% block title %}EQP Application Site{% endblock title %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <ul>
+        <li><a href="/eqpInfo/">EQP-INFO_Home</a></li>
+    </ul>
+{% endblock sidebar %}

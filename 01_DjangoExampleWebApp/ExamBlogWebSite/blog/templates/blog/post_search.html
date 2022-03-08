@@ -1,0 +1,37 @@
+{% extends "base_blog.html" %}
+<!-- post_search.html -->
+{## comment: http://localhost:8000/blog/search/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>BLOG 검색</h3>
+        <br>
+    </p>
+
+    <p>
+        <form action="." method="post"> {% csrf_token %}
+            {{ form.as_table }}
+            <input type="submit" value="조회" class="btn btn-primary btn-sm">
+        </form>
+    </p>
+    <br/><br/>
+
+    {% if object_list %}
+        {% for post in object_list %}
+        <p>
+            <ul>
+                <li><h5><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h5></li>
+                {## comment: <li><h5><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }} (extends)</a></h5></li> ##}
+                {{ post.modify_dt|date:"Y-m-d" }} 
+                <p> : {{ post.description }}</p> 
+            </ul>
+            <h5>------------------------------------------------------------</h5>
+        </p>
+        {% endfor %}
+    {% elif search_term %}
+        <b><i>Search Word({{ search_term }}) Not Found !</i></b>
+    {% endif %}
+    <br/><br/>
+
+{% endblock content %}

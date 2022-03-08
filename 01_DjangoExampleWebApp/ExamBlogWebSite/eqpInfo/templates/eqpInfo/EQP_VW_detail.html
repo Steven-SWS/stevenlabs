@@ -1,0 +1,21 @@
+{% extends "base_eqpInfo.html" %}
+<!-- EQP_VW_detail.html -->
+{## comment: http://localhost:8000/eqpInfo/$EQP_VW_DCP/$CMP/$CMP501/ ##}
+
+{% block content %}
+
+    <h2>{{ APP_NAME }} List</h2>
+    <br>
+
+    <ul>
+        <li><a href="{% url 'eqpInfo:EQP_VW_list' VIEW_NAME ARRA_ID %}">Back</a></li>
+    </ul>
+    <br>
+
+    <ul>
+        {% for key, value in EQP_DATA.items %}
+            <li><b style="color: red;">{{ key }} :</b> {{ value }}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

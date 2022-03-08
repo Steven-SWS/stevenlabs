@@ -1,0 +1,62 @@
+{% extends "base_eqpInfo.html" %}
+<!-- CODE_detail.html -->
+{## comment: http://localhost:8000/eqpInfo/codeConfigInfo/$CATEGORY/ ##}
+
+{% block content %}
+
+    <h2 font-size:inherit; font-weight:inherit;>
+        {{ APP_NAME }} List -> CATEGORY : <b style="color: red;">{{ CATEGORY_ID }}</b>
+    </h2>
+    <br>
+
+    <ul list-style:none; margin: 0; padding: 0;>
+        <li><a href="{% url 'eqpInfo:CODE_list' %}">Back</a></li>
+    </ul>
+    <br>
+
+    <table cellspacing:50; border-collapse: separate; border-spacing:50; border:50 none; table-layout: fixed;>
+
+        <thead>
+            <tr>
+                <th text-align:center;>NO.</th>
+                <th>USE_YN</th>
+                <th>CODE</th>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for CODE in CODE_LIST %}
+                <tr>
+                    <td text-align:center;>{{ forloop.counter }}</td>
+                    {% for key, value in CODE.items %}
+                        {% if key == "USE_YN" %}
+                            {% if value == "Y" %}
+                                <td><input type="checkbox" name="use_yn" checked="true"></td>
+                            {% else %}
+                                <td><input type="checkbox" name="use_yn"></td>
+                            {% endif %}
+                        {% elif key == "DESCRIPTION" and value|length == 0 %}
+                            <td></td>
+                        {% else %}
+                            <td>{{ value|default:"" }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    <br><br><br>
+
+    <ul>
+        {% for CODE in CODE_LIST %}
+            {% for key, value in CODE.items %}
+                <li><b style="color: red;">{{ key }} :</b> {{ value|default:"" }}</li>
+            {% endfor %}
+            <br>
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

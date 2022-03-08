@@ -1,0 +1,33 @@
+{% extends "base_books.html" %}
+<!-- book_detail.html -->
+{## comment: http://localhost:8000/books/book/$99/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>{{ object.title }}</h3>
+        <br>
+    </p>
+    <br>
+
+    <li>Authors: 
+        {% for author in object.authors.all %}
+            {{ author }}
+            {% if not forloop.last %}
+                ,
+            {% else %}
+            {% endif %}
+        {% endfor %}
+    </li>
+
+    <li>Publisher: {{ object.publisher }}</li>
+    <li>Publication date: {{ object.publication_date|date:"Y-m-d" }}</li>
+
+    <br><br>
+
+    <ul>
+        <li><a href="{% url 'books:index' %}">Back</a></li>
+    </ul>
+    <br><br>
+
+{% endblock content %}

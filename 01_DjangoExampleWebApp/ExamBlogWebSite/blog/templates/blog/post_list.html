@@ -1,0 +1,45 @@
+{% extends "base_blog.html" %}
+<!-- post_list.html -->
+{## comment: http://localhost:8000/blog/post/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Blog List - 
+            <a href="{% url 'blog:post_archive' %}">[기간별 블로그]</a>
+            <!-- | <a href="{% url 'blog:post_today_archive' %}">[금일의 블로그]</a>-->
+            | <a href="#">[금일의 블로그]</a>
+        </h3>
+        <br>
+    </p>
+
+    {% for post in POST_LIST %}
+        <p>
+            <ul>
+                <li><h5><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h5></li>
+                {## comment: <li><h5><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }} (extends)</a></h5></li> ##}
+                {{ post.modify_dt|date:"Y-m-d" }} 
+                <p> : {{ post.description }}</p> 
+            </ul>
+            <h5>------------------------------------------------------------</h5>
+        </p>
+    {% endfor %}
+    <br><br>
+
+    {## comment: 페이징 표시 ##}
+    <div>
+        <span>
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+            {% endif %}
+
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">다음</a>
+            {% endif %}
+        </span>
+    </div>
+    <br><br>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base_books.html" %}
+<!-- author_list.html -->
+{## comment: http://localhost:8000/books/author/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Author List</h3>
+        <br>
+    </p>
+    <br>
+
+    <ul>
+        {% for author in object_list %}
+            <li><a href="{% url 'books:author_detail' author.id %}">{{ author.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <br><br>
+    
+{% endblock content %}

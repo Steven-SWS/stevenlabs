@@ -1,0 +1,25 @@
+{% extends "base_blog.html" %}
+<!-- taggit_post_list.html -->
+{## comment: http://localhost:8000/blog/tag/$tagkey/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Posts for tag - {{ tagname }}</h3> 
+        <br>
+    </p>
+
+    {% for post in POST_LIST %}
+        <p>
+            <ul>
+                <li><h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5></li>
+                {## comment: <li><h5><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }} (extends)</a></h5></li> ##}
+                {{ post.modify_dt|date:"Y-m-d" }} 
+                <p> : {{ post.description }}</p> 
+            </ul>
+            <br>
+        </p>
+    {% endfor %}
+    <br><br><br><br>
+
+{% endblock content %}

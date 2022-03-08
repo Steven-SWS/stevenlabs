@@ -1,0 +1,19 @@
+{% extends "base_auth.html" %}
+<!-- register_done.html -->
+{## comment: http://localhost:8000/accounts/register/done/ ##}
+
+{% block title %}New User Register Done{% endblock title %}
+
+{% block content %}
+
+    <h2>회원 가입이 성공적으로 완료되었습니다.</h2>
+    <br>
+
+    <p>Thank you for registering.</p>
+
+    <p class="font-italic">
+        <a href="{% url 'login' %}">Log in</a>
+    </p>
+    <br>
+
+{% endblock content %}

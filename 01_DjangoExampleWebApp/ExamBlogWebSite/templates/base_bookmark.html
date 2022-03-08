@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+<!-- base_bookmark.html -->
+{## comment: http://localhost:8000/bookmark/ ##}
+
+{% block title %}Bookmark Application Site{% endblock title %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <ul>
+        <li><a href="/bookmark/">Bookmark_Home</a></li>
+    </ul>
+{% endblock sidebar %}

@@ -1,0 +1,35 @@
+{% extends "base_blog.html" %}
+<!-- post_archive.html -->
+{## comment: http://localhost:8000/blog/archive/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Post Archives until {% now "Y-m-d" %}</h3>
+        <br>
+    </p>
+
+    <p>
+        <ul>
+            {% for date in date_list %}
+                <!--<li style="display: inline;">&nbsp;<a href="{% url 'blog:post_year_archive' date|date:'Y' %}">Y{{ date|date:"Y" }}</a></li>-->
+                <a href="{% url 'blog:post_year_archive' date|date:'Y' %}" class="btn btn-outline-primary btn-sm mx-1">Y{{ date|date:"Y" }}</a>
+            {% endfor %}        
+        </ul>
+    </p>
+    <br><br>
+
+    <div>
+        <ul>
+            {% for post in object_list %}
+                <!--<li>{{ post.modify_dt|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'blog:post_detail' post.slug %}"><strong>{{ post.title }}</strong></a></li>-->
+                <li class="h5">
+                    {{ post.modify_dt|date:"Y-m-d" }}&emsp;
+                    <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br><br>
+
+{% endblock content %}

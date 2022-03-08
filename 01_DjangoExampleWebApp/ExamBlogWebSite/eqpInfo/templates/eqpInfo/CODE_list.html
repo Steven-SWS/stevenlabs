@@ -1,0 +1,25 @@
+{% extends "base_eqpInfo.html" %}
+<!-- CODE_list.html -->
+{## comment: http://localhost:8000/eqpInfo/codeConfigInfo/ ##}
+
+{% block content %}
+
+    <h2>{{ APP_NAME }} List</h2>
+    <br>
+
+    <ul>
+        <li><a href="{% url 'eqpInfo:index' %}">Back</a></li>
+    </ul>
+    <br>
+
+    <ul>
+        {% for CATEGORY in CATEGORY_LIST %}
+            {% if CATEGORY == "None" %}
+                <li>{{ CATEGORY }}</li>
+            {% else %}
+                <li><a href="{% url 'eqpInfo:CODE_detail' CATEGORY %}">{{ CATEGORY }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

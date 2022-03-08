@@ -1,0 +1,23 @@
+{% extends "base_eqpInfo.html" %}
+<!-- index.html -->
+{## comment: http://localhost:8000/eqpInfo/ ##}
+
+{% block content %}
+
+    <h2>장비정보 조회</h2>
+    <br>
+
+    <ul>
+        {% for VIEW_NAME in EQP_VW_LIST %}
+        <!--{% with "eqpInfo:"|add:VIEW_NAME|add:"_list" as urlvar %}-->
+            {% with "eqpInfo:AREA_list" as urlvar %}
+                {% if VIEW_NAME == "CODE_MST_PP" %}
+                    <li><a href="{% url 'eqpInfo:CODE_list' %}">{{ VIEW_NAME }}</a></li>
+                {% else %}
+                    <li><a href="{% url urlvar VIEW_NAME %}">{{ VIEW_NAME }}</a></li>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

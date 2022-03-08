@@ -1,0 +1,21 @@
+{% extends "base_books.html" %}
+<!-- index.html -->
+{## comment: http://localhost:8000/books/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Books Management System</h3>
+        <br>
+    </p>
+    
+    <ul>
+        {% for modelname in model_list %}
+            {% with "books:"|add:modelname|lower|add:"_list" as urlvar %}
+                <li><a href="{% url urlvar %}">{{ modelname }}</a></li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+    <br><br>
+
+{% endblock content %}

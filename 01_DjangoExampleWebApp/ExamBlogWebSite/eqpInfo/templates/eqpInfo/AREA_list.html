@@ -1,0 +1,25 @@
+{% extends "base_eqpInfo.html" %}
+<!-- AREA_list.html -->
+{## comment: http://localhost:8000/eqpInfo/$EQP_VW_DCP/ ##}
+
+{% block content %}
+
+    <h2>{{ APP_NAME }} List</h2>
+    <br>
+
+    <ul>
+        <li><a href="{% url 'eqpInfo:index' %}">Back</a></li>
+    </ul>
+    <br>
+
+    <ul>
+        {% for AREA in AREA_LIST %}
+            {% if AREA == "None" %}
+                <li>{{ AREA }}</li>
+            {% else %}
+                <li><a href="{% url 'eqpInfo:EQP_VW_list' VIEW_NAME AREA %}">{{ AREA }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

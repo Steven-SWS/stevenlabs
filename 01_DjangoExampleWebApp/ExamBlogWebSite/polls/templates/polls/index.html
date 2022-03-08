@@ -1,0 +1,20 @@
+{% extends "base_polls.html" %}
+<!-- index.html -->
+{## comment: http://localhost:8000/polls/ ##}
+
+{% block content %}
+
+    <h2><p>마음이 끌리는대로 투표하세요</p></h2>
+    <br>
+
+    {% if question_list %}
+        <ul>
+            {% for question in question_list %}
+                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>최신 설문이 아직 없습니다. (No polls are available)</p>
+    {% endif %}
+
+{% endblock content %}

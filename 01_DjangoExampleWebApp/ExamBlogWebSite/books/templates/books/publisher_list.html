@@ -1,0 +1,20 @@
+{% extends "base_books.html" %}
+<!-- publisher_list.html -->
+{## comment: http://localhost:8000/books/publisher/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>Publisher List</h3>
+        <br>
+    </p>
+    <br>
+    
+    <ul>
+        {% for publisher in object_list %}
+            <li><a href="{% url 'books:publisher_detail' publisher.id %}">{{ publisher.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <br><br>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+<!-- base_photo.html -->
+{## comment: http://localhost:8000/photo/ ##}
+
+{% block title %}Photo Application Site{% endblock title %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <ul>
+        <li><a href="/photo/">Photo_Home</a></li>
+    </ul>
+{% endblock sidebar %}

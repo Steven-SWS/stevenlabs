@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+<!-- base_auth.html -->
+{## comment: http://localhost:8000/accounts/ ##}
+
+{% block title %}Authority{% endblock title %}
+
+{% block sidebar %}
+    {{ block.super }}
+    <ul>
+        <li><a href="/accounts/login/">Auth_Home</a></li>
+    </ul>
+{% endblock sidebar %}

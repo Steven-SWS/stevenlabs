@@ -1,0 +1,24 @@
+{% extends "base_books.html" %}
+<!-- publisher_detail.html -->
+{## comment: http://localhost:8000/books/publisher/$99/ ##}
+
+{% block content %}
+
+    <p>
+        <h3>{{ object.name }}</h3>
+        <br>
+    </p>
+    <br>
+
+    <p>{{ object.website }}</p>
+    
+    <li>Address: {{ object.address }}</li>
+
+    <br><br>
+    
+    <ul>
+        <li><a href="{% url 'books:index' %}">Back</a></li>
+    </ul>
+    <br><br>
+    
+{% endblock content %}

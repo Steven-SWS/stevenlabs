@@ -1,0 +1,104 @@
+{% extends "base_blog.html" %}
+<!-- post_detail.html -->
+{## comment: http://localhost:8000/blog/post/$django-example/ ##}
+
+{% block extra-style %}
+<style>
+.post-body {
+    width: 80%;
+    margin: auto;
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 14px;
+}
+</style>
+{% endblock extra-style %}
+
+{% block content %}
+
+    <div class="post-body">
+
+        <p>
+            <h3 style="color: red;"><strong>제목 : {{ object.title }}</strong></h3>
+            <br>
+        </p>
+
+        <p>
+            <ul>
+                {% if object.get_next %}
+                    <!--<a href="{{ object.get_next.get_absolute_url }}" title="이전 포스트 보기">&laquo;--&nbsp;&nbsp;{{ object.get_next }}</a>-->
+                    <a href="{{ object.get_next.get_absolute_url }}" title="이전 포스트 보기"><i class="fas fa-arrow-circle-left"></i> {{ object.get_next }}</a>
+                {% endif %}
+
+                {% if object.get_previous %}
+                    &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+                    <!--<a href="{{ object.get_previous.get_absolute_url }}" title="다음 포스트 보기">{{ object.get_previous }}&nbsp;&nbsp;--&raquo;</a>-->
+                    <a href="{{ object.get_previous.get_absolute_url }}" title="다음 포스트 보기">{{ object.get_previous }} <i class="fas fa-arrow-circle-right"></i></a>
+                {% endif %}
+            </ul>
+        </p>
+        <br>
+
+        <div>
+            <p>작성일자 : {{ object.modify_dt|date:"Y-m-d" }}</p>
+        </div>
+        <br>
+
+        <div class="body">
+            <p>------------------------------------------------------------</p>
+
+            <p>
+                <h3 style="color: green;"><strong>[내용] : </strong></h3>
+            </p>
+            <br>
+
+            {{ object.content|linebreaks }}
+        </div>
+        <br>
+        
+        <div>
+            <b>TAGS</b> <i class="fas fa-tag"></i>
+            {% load taggit_templatetags2_tags %}
+            {% get_tags_for_object object as "tags" %}
+            {% for tag in tags %}
+                <a href="{% url 'blog:tagged_object_list' tag.name %}">{{ tag.name }}</a>
+            {% endfor %}
+            &emsp;
+            <a href="{% url 'blog:tag_cloud' %}">
+                <span class="btn btn-info btn-sm">TagCloud</span>
+            </a>
+        </div>
+        <br><br>
+
+        <!--<div id="disqus_thread"></div>-->
+        <br><br><br><br>
+
+    </div>
+
+{% endblock content %}
+
+{% block extra-script %}
+<!--
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION
+*  BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+*  https://disqus.com/admin/universalcode/#configuration-variables
+*/
+
+var disqus_config = function () {
+    this.page.identifier = '{{ disqus_id }}';
+    this.page.url = '{{ disqus_url }}';
+    this.page.title = '{{ disqus_title }}';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ disqus_short }}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+{% endblock extra-script %}

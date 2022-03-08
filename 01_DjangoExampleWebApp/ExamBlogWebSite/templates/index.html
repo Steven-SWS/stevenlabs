@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<!-- index.html -->
+{## comment: http://localhost:8000/ ##}
+
+{% block content %}
+
+    <h2>wsson Application List</h2>
+    <br>
+    
+    <ul>
+        <!--
+        {% for appnme in app_list %}
+            {% with appname|add:":"|add:"index" as urlvar %}
+                <li><a href="{% url urlvar %}">{{ appname }}</a></li>
+            {% endwith %}
+        {% endfor %}
+        -->
+        {% for key, value in app_list.items %}
+            <li><a href="{% url key|add:':index' %}">{{ value }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

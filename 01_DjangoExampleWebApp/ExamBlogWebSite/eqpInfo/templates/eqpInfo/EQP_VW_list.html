@@ -1,0 +1,25 @@
+{% extends "base_eqpInfo.html" %}
+<!-- EQP_VW_list.html -->
+{## comment: http://localhost:8000/eqpInfo/$EQP_VW_DCP/$CMP/ ##}
+
+{% block content %}
+
+    <h2>{{ APP_NAME }} List</h2>
+    <br>
+
+    <ul>
+        <li><a href="{% url 'eqpInfo:AREA_list' VIEW_NAME %}">Back</a></li>
+    </ul>
+    <br>
+
+    <ul>
+        {% for EQP_ID in EQP_LIST %}
+            {% if EQP_ID == "None" %}
+                <li>{{ EQP_ID }}</li>
+            {% else %}
+                <li><a href="{% url 'eqpInfo:EQP_VW_detail' VIEW_NAME AREA_ID EQP_ID %}">{{ EQP_ID }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}
