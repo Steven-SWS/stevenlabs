@@ -195,6 +195,6 @@ def main():
     print('----- end -----')
 
 
-# python C:\Program_SWS\99_Develop\01_Python\.VueDjangoStarterWebApp\backend\mysiteProject\DAS.py
+# python C:\Users\Steven\GitRepository\stevenlabs-common-develop\01_DjangoExampleWebApp\ExamBlogWebSite\mysiteProject\DAS.py
 if __name__ == "__main__":
     main()

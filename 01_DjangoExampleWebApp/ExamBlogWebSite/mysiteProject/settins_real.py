@@ -19,9 +19,9 @@ import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# C:\Program_SWS\99_Develop\01_Python\.VueDjangoStarterWebApp\backend
+# C:\Users\Steven\GitRepository\stevenlabs-common-develop\01_DjangoExampleWebApp\ExamBlogWebSite
 BASE_DIR = Path(__file__).resolve().parent.parent
-#BASE_DIR = 'C:/Program_SWS/99_Develop/01_Python/.VueDjangoStarterWebApp/backend'
+#BASE_DIR = 'C:/Users/Steven/GitRepository/stevenlabs-common-develop/01_DjangoExampleWebApp/ExamBlogWebSite'
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WWW_DIR = 'www_dir'
 SQLite_DIR = 'database/SQLite'
@@ -133,7 +133,7 @@ ROOT_URLCONF = 'mysiteProject.urls'
 # 템플릿 찾는 순서 : TEMPLATES 의 'DIRS' 목록의 위에서 아래 순서대로 -> INSTALLED_APPS 의 목록의 위에서 아래 순서대로
 # 1. os.path.join(BASE_DIR, 'templates')
 # 2. 장고 디렉토리 ('django.contrib.admin' ...)
-# 3. 개발자 App 디렉토리 ('polls.apps.PollsConfig' : .VueDjangoStarterWebApp￦backend￦polls￦templates￦polls￦index.html)
+# 3. 개발자 App 디렉토리 ('polls.apps.PollsConfig' : 01_DjangoExampleWebApp￦ExamBlogWebSite￦polls￦templates￦polls￦index.html)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
