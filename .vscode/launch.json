@@ -8,7 +8,7 @@
             "name": "Python: runserver",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\backend\\manage.py",
+            "program": "${workspaceFolder}\\01_DjangoExampleWebApp\\ExamBlogWebSite\\manage.py",
             "console": "integratedTerminal",
             "args": [
                 "runserver",
@@ -19,7 +19,7 @@
             "name": "Python: Example",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\backend\\manage.py",
+            "program": "${workspaceFolder}\\01_DjangoExampleWebApp\\ExamBlogWebSite\\manage.py",
             "console": "integratedTerminal",
             "args": [
                 "runserver",
@@ -30,7 +30,7 @@
             "name": "Python: Shell Start",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\backend\\manage.py",
+            "program": "${workspaceFolder}\\01_DjangoExampleWebApp\\ExamBlogWebSite\\manage.py",
             "console": "integratedTerminal",
             "args": [
                 "shell",
