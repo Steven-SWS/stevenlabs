@@ -105,8 +105,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #---------------------------------------------------
-    'taggit.apps.TaggitAppConfig',    # pip install django-taggit
-    'taggit_templatetags2',    # pip install django-taggit-templatetags2
+    #'taggit.apps.TaggitAppConfig',    # pip install django-taggit
+    #'taggit_templatetags2',    # pip install django-taggit-templatetags2
     'widget_tweaks',    # pip install django-widget-tweaks
     #---------------------------------------------------
     'polls.apps.PollsConfig',

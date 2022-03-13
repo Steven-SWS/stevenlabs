@@ -36,10 +36,10 @@ urlpatterns = [
     path('archive/today/', views.PostTodayAV.as_view(), name='post_today_archive'),
 
     # http://localhost:8000/blog/tag/
-    path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
+    #path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
 
     # http://localhost:8000/blog/tag/$tagkey/
-    path('tag/<str:tagkey>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
+    #path('tag/<str:tagkey>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
 
     # http://localhost:8000/blog/search/
     path('search/', views.SearchFormView.as_view(), name='search'),
