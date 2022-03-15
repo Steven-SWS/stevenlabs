@@ -14,13 +14,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
+#from pathlib import Path
 import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # C:\Users\Steven\GitRepository\stevenlabs-common-develop\01_DjangoExampleWebApp\ExamBlogWebSite
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent    # 운영환경에서 안됨
+BASE_DIR = os.path.abspath(os.path.join(__file__, '../../'))
 #BASE_DIR = 'C:/Users/Steven/GitRepository/stevenlabs-common-develop/01_DjangoExampleWebApp/ExamBlogWebSite'
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WWW_DIR = 'www_dir'
@@ -37,7 +38,7 @@ with open(os.path.join(BASE_DIR, WWW_DIR, SECRET_FILE)) as f:    # 별도의 파
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['192.168.0.104', '192.168.0.105', 'localhost', '127.0.0.1']    # WAS와 WSGI 간 주고받을 신뢰할 수 있는 WEB서버 주소 (클라이언트 주소 아님)
+ALLOWED_HOSTS = ['192.168.56.1', '127.0.0.1', 'localhost', '192.168.0.104', '192.168.0.105']    # WAS와 WSGI 간 주고받을 신뢰할 수 있는 WEB서버 주소 (클라이언트 주소 아님)
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 #ALLOWED_HOST = ['*']
 

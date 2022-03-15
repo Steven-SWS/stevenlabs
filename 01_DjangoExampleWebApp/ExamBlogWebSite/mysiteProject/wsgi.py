@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 
 import os
 import sys
-from pathlib import Path
+#from pathlib import Path
 from django.core.wsgi import get_wsgi_application
 
 # [추가] 프로젝트의 Root 경로를 PATH 변수에 추가합니다.
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent    # 운영환경에서 안됨
+BASE_DIR = os.path.abspath(os.path.join(__file__, '../../'))
 path = BASE_DIR
 if path not in sys.path:
     sys.path.append(path)
