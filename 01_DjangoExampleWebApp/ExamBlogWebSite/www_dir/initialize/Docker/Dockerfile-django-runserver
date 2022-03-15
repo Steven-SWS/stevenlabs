@@ -1,8 +1,10 @@
-#----------------------------------------
-# cd /home/sws/swsapp/mywebsite/stevenlabs/01_DjangoExampleWebApp/ExamBlogWebSite
-# touch Dockerfile
-# vi Dockerfile
-#----------------------------------------
+####################
+# -- Python + Django (runserver, Standalone) --
+# /home/sws/swsapp/mywebsite/stevenlabs/01_DjangoExampleWebApp/ExamBlogWebSite/Dockerfile
+#    >> cd /home/sws/swsapp/mywebsite/stevenlabs/01_DjangoExampleWebApp/ExamBlogWebSite
+#    >> touch /home/sws/swsapp/mywebsite/stevenlabs/01_DjangoExampleWebApp/ExamBlogWebSite/Dockerfile
+#    >> vi /home/sws/swsapp/mywebsite/stevenlabs/01_DjangoExampleWebApp/ExamBlogWebSite/Dockerfile
+####################
 
 # 생성하는 docker의 python 버전
 FROM python:3.9.7
@@ -27,19 +29,18 @@ WORKDIR /srv/docker-django-server
 RUN pip install --upgrade pip
 
 # 필수 패키지 설치
-RUN pip install -r requirements.txt
-RUN pip install django-taggit
-RUN pip install django-taggit-templatetags2
-RUN pip install django-widget-tweaks
-RUN pip install cx_Oracle
+RUN pip install -r /srv/docker-django-server/www_dir/initialize/common/requirements.txt
+#RUN pip install django-taggit
+#RUN pip install django-taggit-templatetags2
+#RUN pip install django-widget-tweaks
+#RUN pip install cx_Oracle
 
 # 데이터베이스 변경사항 추적/생성
-RUN python manage.py makemigrations blog
+#RUN python manage.py makemigrations blog
 
 # 데이터베이스 변경사항 반영
-RUN python manage.py migrate blog
+#RUN python manage.py migrate blog
 
 # Run Server - WAS Port 30001(WSL) or 30002(VM)
 EXPOSE 30002
 CMD ["python", "manage.py", "runserver", "0.0.0.0:30002"]
-

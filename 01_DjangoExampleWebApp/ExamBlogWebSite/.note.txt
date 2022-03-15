@@ -1,0 +1,23 @@
+-- Django Standalone 버전 Docker 컨테이너 실행
+docker run -p 30002:30002 --name local-vm-django-ctn01 -d img-mydjango:v20220311
+
+-- 컨테이너 동작 확인
+docker image ls
+docker ps -a
+
+-- 컨테이너 중지
+docker stop [컨테이너이름]
+    -> ex) docker stop --force local-vm-django-ctn01
+
+-- 컨테이너 삭제
+docker rm [컨테이너이름]
+    -> ex) docker rm local-vm-django-ctn01
+
+-- 컨테이너 강제중지 (삭제)
+docker rm --force [컨테이너이름]
+    -> ex) docker rm --force local-vm-django-ctn01
+
+-- 이미지 삭제
+docker image rm [이미지ID]
+    -> ex) docker image rm --force 67acb154b8aa
+    -> ex) docker image rm --force img-mydjango:v20220311
