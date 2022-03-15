@@ -1,0 +1,4 @@
+*.pyc
+*.log
+01_DjangoExampleWebApp/ExamBlogWebSite/logs/mysiteFramework.log
+01_DjangoExampleWebApp/ExamBlogWebSite/database/SQLite/db.sqlite3
