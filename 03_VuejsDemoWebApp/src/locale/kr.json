@@ -1,0 +1,116 @@
+{
+   "kr": "한국어",
+   "user": "사용자",
+   "login": "로그인",
+   "register": "등록",
+   "username": "사용자이름",
+   "password": "비밀번호",
+   "sponsor": "후원자",
+   "login_account": "로그인 계정",
+   "home": "홈",
+   "media": "미디어",
+   "dashboard": "대시보드",
+   "CMS": "켄텐츠 관리",
+   "task": "작업",
+   "widget": "구성 요소",
+   "chart": "차트",
+   "list": "목록",
+   "social": "사회적",
+   "statistic": "통계",
+   "echart": "이차트",
+   "g2": "G2",
+   "mail": "메일",
+   "inbox": "받은 편지함",
+   "table": "테이블",
+   "access_denied": "액세스가 제한됨",
+   "basic_form": "기본 양식",
+   "step_form": "스템 양식",
+   "form": "양식",
+   "acl": "권한 제어",
+   "users": "사용자들",
+   "user_list": "사용자 목록",
+   "edit_user": "사용자 편집",
+   "create_user": "사용자 생성",
+   "changelog": "변경 로그",
+   "calendar": "캘린더",
+   "all": "모두",
+   "dir": "폴더",
+   "element": "요소",
+   "cascader": "캐스케이드",
+   "chat": "채팅",
+   "cms": "콘텐츠 관리",
+   "task_list": "작업 목록",
+   "kanboard": "칸보드",
+   "rule": {
+      "required": "{0}를 입력 하십시오"
+   },
+   "$vuetify": {
+      "badge": "뱃지",
+      "close": "닫기",
+      "dataIterator": {
+         "noResultsText": "일치하는 결과가 없습니다.",
+         "loadingText": "로드중..."
+      },
+      "dataTable": {
+         "itemsPerPageText": "페이지당 아이템수:",
+         "ariaLabel": {
+            "sortDescending": ":내림차순 정렬",
+            "sortAscending": ":오름차순 정렬",
+            "sortNone": ":정렬 안함",
+            "activateNone": "정렬 아함",
+            "activateDescending": "내림차순 정렬 활성화",
+            "activateAscending": "오름차순 정렬 활성화"
+         },
+         "sortBy": "정렬 기준"
+      },
+      "dataFooter": {
+         "itemsPerPageText": "페이지당 아이템수:",
+         "itemsPerPageAll": "모두",
+         "nextPage": "다음 페이지",
+         "prevPage": "이전 페이지",
+         "firstPage": "첫 페이지",
+         "lastPage": "마지막 페이지",
+         "pageText": "{0}-{1} / {2}"
+      },
+      "datePicker": {
+         "itemsSelected": "{0} 선택됨",
+         "nextMonthAriaLabel": "다음 달",
+         "nextYearAriaLabel": "내년",
+         "prevMonthAriaLabel": "이전 달",
+         "prevYearAriaLabel": "이전 연도"
+      },
+      "noDataText": "데이터 없음",
+      "carousel": {
+         "prev": "이전",
+         "next": "다음",
+         "ariaLabel": {
+            "delimiter": "Carousel slide {0} / {1}"
+         }
+      },
+      "calendar": {
+         "moreEvents": "항목이 {0}개 더 있습니다."
+      },
+      "fileInput": {
+         "counter": "{0} 파일",
+         "counterSize": "총 {1}개중 {0}파일 ）"
+      },
+      "timePicker": {
+         "am": "AM",
+         "pm": "PM"
+      },
+      "pagination": {
+         "ariaLabel": {
+            "wrapper": "페이지 매김 탐색",
+            "next": "다음 페이지",
+            "previous": "이전 페이지",
+            "page": "{0}페이지로 이동",
+            "currentPage": "현재 페이지 {0}"
+         }
+      },
+      "rating": {
+         "ariaLabel": {
+            "icon": "Rating {0} of {1}"
+         }
+      }
+   }
+}
