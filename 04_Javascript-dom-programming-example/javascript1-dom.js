@@ -1,3 +1,189 @@
+//Ex6-4 : 노드조작 - 메뉴추가(createTextNode, Element) - HTML 태그 Node 추가/삭제 (약간 개선된 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section6_4");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var titleInput = section.querySelector(".title-input"); 
+    var menuListUl = section.querySelector(".menu-list"); 
+    var addButton = section.querySelector(".add-button");
+    var delButton = section.querySelector(".del-button");
+
+    // 노드 추가 (약간 개선된 방법)
+    addButton.onclick = function(){
+        var title = titleInput.value; // 입력값 가져오기
+        var html = '<a href="">' + title + '</a>'; // 입력값으로 a Node 생성 (HTML 태그)
+        var liNode = document.createElement("li"); // <li></li> 엘리먼트 노드 생성
+        liNode.innerHTML = html; // 지정된 노드의 child로 노드 붙이기 (HTML을 직접 대입)
+        
+        //menuListUl.appendChild(liNode);       // 지정된 노드의 child로 노드 붙이기
+        menuListUl.append(liNode); // (향상된 기능) 지정된 노드의 child로 노드 붙이기
+
+        console.log("생성 txtNode : " + html);
+        console.log("--------------------");
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+
+    // 노드 삭제 (약간 개선된 방법)
+    delButton.onclick = function(){
+        //var txtNode = menuListUl.childNodes[0]; // TextNode 가져오기 (전체노드 대상으로 순회, 공백노드 포함)
+        var liNode = menuListUl.children[0]; // ListNode 가져오기 (엘리먼트만 순회)
+        
+        console.log("삭제 txtNode : " + liNode.children[0].textContent);
+        console.log("--------------------");
+        //menuListUl.removeChild(liNode);         // 지정된 노드의 child 중에서 해당 노드 삭제
+        menuListUl.remove(liNode); // (향상된 기능) 지정된 노드의 child 중에서 해당 노드 삭제
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+});
+
+//Ex6-3 : 노드조작 - 메뉴추가(createTextNode, Element) - HTML 태그 Node 추가/삭제 (비권장 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section6_3");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var titleInput = section.querySelector(".title-input"); 
+    var menuListUl = section.querySelector(".menu-list"); 
+    var addButton = section.querySelector(".add-button");
+    var delButton = section.querySelector(".del-button");
+
+    // 노드 추가 (비권장 방법)
+    addButton.onclick = function(){
+        var title = titleInput.value; // 입력값 가져오기
+        var txtNode = '<li><a href="">' + title + '</a></li>'; // 입력값으로 List Node 생성 (HTML 태그)
+
+        //menuListUl.innerHTML = txtNode;// (대체)   지정된 노드의 child로 노드 붙이기 (HTML을 직접 대입)
+        menuListUl.innerHTML += txtNode; // (Append) 지정된 노드의 child로 노드 붙이기 (HTML을 직접 대입)
+
+        console.log("생성 txtNode : " + txtNode);
+        console.log("--------------------");
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+
+    // 노드 삭제 (비권장 방법)
+    delButton.onclick = function(){
+        //var txtNode = menuListUl.childNodes[0]; // TextNode 가져오기 (전체노드 대상으로 순회, 공백노드 포함)
+        var liNode = menuListUl.children[0]; // ListNode 가져오기 (엘리먼트만 순회)
+        
+        console.log("삭제 txtNode : " + liNode.children[0].textContent);
+        console.log("--------------------");
+        menuListUl.removeChild(liNode); // 지정된 노드의 child 중에서 해당 노드 삭제
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+});
+
+//Ex6-2 : 노드조작 - 메뉴추가(createTextNode, Element) - 노가다성 태그 Node 추가/삭제 (비권장 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section6_2");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var titleInput = section.querySelector(".title-input"); 
+    var menuListUl = section.querySelector(".menu-list"); 
+    var addButton = section.querySelector(".add-button");
+    var delButton = section.querySelector(".del-button");
+
+    // 노드 추가 (비권장 방법)
+    addButton.onclick = function(){
+        var title = titleInput.value; // 입력값 가져오기
+        var txtNode = document.createTextNode(title); // 입력값으로 TextNode 생성
+        
+        var aNode = document.createElement("a"); // <a></a> 엘리먼트 노드 생성
+        aNode.href=""; // 속성추가 -> <a href=""></a>
+        aNode.appendChild(txtNode); // '<a>' 노드 밑에 위에서 생성한 Text 노드를 붙임
+        
+        var liNode = document.createElement("li"); // <li></li> 엘리먼트 노드 생성
+        liNode.appendChild(aNode); // '<li>' 노드 밑에 '<a>' 노드를 붙임
+        
+        menuListUl.appendChild(liNode); // 지정된 노드의 child로 노드 붙이기
+
+
+        console.log("생성 txtNode : " + txtNode.textContent);
+        console.log("--------------------");
+        
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+
+    // 노드 삭제 (공백노드도 삭제대상) (비권장 방법)
+    delButton.onclick = function(){
+        var txtNode = menuListUl.childNodes[0]; // TextNode 가져오기
+        menuListUl.removeChild(txtNode); // 지정된 노드의 child 중에서 해당 노드 삭제
+        
+        console.log("삭제 txtNode : " + txtNode.textContent);
+        console.log("--------------------");
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListUl : " + menuListUl);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+});
+
+//Ex6-1 : 노드조작 - 메뉴추가(createTextNode, Element) - 단순 TextNode 추가/삭제 (비정상적인 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section6_1");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var titleInput = section.querySelector(".title-input"); 
+    var menuListDiv = section.querySelector(".menu-list"); 
+    var addButton = section.querySelector(".add-button");
+    var delButton = section.querySelector(".del-button");
+
+    // 노드 추가 (비정상적인 방법)
+    addButton.onclick = function(){
+        var title = titleInput.value; // 입력값 가져오기
+        var txtNode = document.createTextNode(title); // 입력값으로 TextNode 생성
+        menuListDiv.appendChild(txtNode); // 지정된 노드의 child로 노드 붙이기
+
+        console.log("생성 txtNode : " + txtNode.textContent);
+        console.log("--------------------");
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListDiv : " + menuListDiv);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+
+    // 노드 삭제 (공백노드도 삭제대상) (비정상적인 방법)
+    delButton.onclick = function(){
+        var txtNode = menuListDiv.childNodes[0]; // TextNode 가져오기
+        menuListDiv.removeChild(txtNode); // 지정된 노드의 child 중에서 해당 노드 삭제
+        
+        console.log("삭제 txtNode : " + txtNode.textContent);
+        console.log("--------------------");
+
+        console.log("titleInput : " + titleInput.value);
+        console.log("menuListDiv : " + menuListDiv);
+        console.log("addButton : " + addButton.value);
+        console.log("delButton : " + delButton.value);
+    };
+});
+
 //Ex5-4 : 엘리먼트 노드의 속성 & CSS 속성 변경 - 스타일 속성 변경 (테두리 색깔 변경)
 window.addEventListener("load", function(){
 
