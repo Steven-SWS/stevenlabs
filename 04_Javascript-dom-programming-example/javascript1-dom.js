@@ -1,3 +1,556 @@
+//Ex10-1 : 클릭한 컬럼을 기준으로 레코드 정렬하기 #1
+window.addEventListener("load", function(){
+
+    // Sample Data
+    var notices = [
+        {"id":1, "title":"유투브에 끌려다니지 않으려고 했는데....ㅜㅜ..", "regDate":"2019-02-05", "writerId":"newlec", "hit":2},
+        {"id":2, "title":"자바스크립트란..", "regDate":"2019-02-02", "writerId":"newlec", "hit":0},
+        {"id":3, "title":"기본기가 튼튼해야....", "regDate":"2019-02-01", "writerId":"newlec", "hit":1},
+        {"id":4, "title":"근데 조회수가 ㅜㅜ..", "regDate":"2019-01-25", "writerId":"newlec", "hit":0}
+    ];
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section10_1");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var titldTd = section.querySelector(".title");
+    var tbodyNode = noticeList.querySelector("tbody");
+
+    // Template을 가지고 HTML Binding하는 함수
+    var bindData = function(){
+        // Template 노드 가져오기
+        var template = section.querySelector("template");
+
+        for(var i=0; i<notices.length; i++){
+            // 노드 복제
+            var cloneNode = document.importNode(template.content, true);
+            var tds = cloneNode.querySelectorAll("td");
+            tds[0].innerText = notices[i].id; // .textContent 동일 기능
+
+            //tds[1].innerHTML = '<a href="' + notices[i].id + '">' + notices[i].title + '</a>'; // 아래와 동일기능
+            var aNode = tds[1].children[0];
+            aNode.href=notices[i].id;
+            aNode.textContent = notices[i].title;
+
+            tds[2].textContent = notices[i].regDate;
+            tds[3].textContent = notices[i].writerId;
+            tds[4].textContent = notices[i].hit;
+
+            // tbody 노드의 끝에 복제노드 추가
+            //tbodyNode.appendChild(cloneNode); // 아래와 결과 동일
+            tbodyNode.append(cloneNode);
+
+            //console.log("cloneNode : " + tbodyNode.textContent);
+        }
+    };
+
+    // 함수 호출 (정렬되기 전 상태)
+    var titleSorted = false;
+    bindData();
+
+    // 제목 컬럼헤더 클릭 (정렬)
+    titldTd.onclick = function(){
+        if (!titleSorted) {
+            // Sample Data 정렬
+            notices.sort(function(a,b){
+                if (a.title < b.title) {
+                    return -1;
+                } else if (a.title > b.title) {
+                    return 1;
+                } else {
+                    // same case
+                    return 0;
+                }
+            });
+            titleSorted = true; // 정렬 완료
+        } else {
+            // Sample Data 역정렬
+            notices.reverse();
+        }
+
+        // 함수 호출 (정렬된 Sample Data 이용)
+        tbodyNode.innerHTML = ""; // 초기화
+        bindData();
+    };
+});
+
+//Ex9-3 : 다중 노드선택 방법과 일괄삭제, 노드의 자리바꾸기 (Swap)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section9_3");
+
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbody = noticeList.querySelector("tbody");
+    var allCheckbox = section.querySelector(".overall-checkbox");
+    var delButton = section.querySelector(".del-button");
+    var swapButton = section.querySelector(".swap-button");
+
+    // 전체선택 체크박스 값 변경 시 이벤트
+    allCheckbox.onchange = function(){
+        // input 태그의 type="checkbox" 인 모든 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']");
+        for (let i = 0; i < inputs.length; i++) {
+            // 전체선택 체크박스 값과 동일하게 변경함
+            inputs[i].checked = allCheckbox.checked;
+        }
+        
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    // 일괄삭제 수행 (향상된 방법)
+    delButton.onclick = function(){
+        // input 태그의 type="checkbox" 이면서 checked=true인 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']:checked");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].parentElement.parentElement.remove();
+        }
+
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    // 선택된 노드 Swap
+    swapButton.onclick = function(){
+        // input 태그의 type="checkbox" 이면서 checked=true인 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']:checked");
+        if (inputs.length != 2) {
+            alert("엘리먼트는 2개만 선택되어야 합니다.");
+            return;
+        }
+        var trs = [];
+        for (let i = 0; i < inputs.length; i++) {
+            trs.push(inputs[i].parentElement.parentElement);
+        }
+
+        // 첫번째 노드 복제
+        var cloneNode = trs[0].cloneNode(true);
+
+        // 노드 Replace (순서 중요)
+        trs[1].replaceWith(cloneNode);
+        trs[0].replaceWith(trs[1]);
+
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+});
+
+//Ex9-2 : 다중 노드선택 방법과 일괄삭제, 노드의 자리바꾸기 (향상된 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section9_2");
+
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbody = noticeList.querySelector("tbody");
+    var allCheckbox = section.querySelector(".overall-checkbox");
+    var delButton = section.querySelector(".del-button");
+    var swapButton = section.querySelector(".swap-button");
+
+    // 전체선택 체크박스 값 변경 시 이벤트
+    allCheckbox.onchange = function(){
+        // input 태그의 type="checkbox" 인 모든 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']");
+        for (let i = 0; i < inputs.length; i++) {
+            // 전체선택 체크박스 값과 동일하게 변경함
+            inputs[i].checked = allCheckbox.checked;
+        }
+        
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    // 일괄삭제 수행 (향상된 방법)
+    delButton.onclick = function(){
+        // input 태그의 type="checkbox" 이면서 checked=true인 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']:checked");
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].parentElement.parentElement.remove();
+        }
+
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    swapButton.onclick = function(){
+    };
+});
+
+//Ex9-1 : 다중 노드선택 방법과 일괄삭제, 노드의 자리바꾸기
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section9_1");
+
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbody = noticeList.querySelector("tbody");
+    var allCheckbox = section.querySelector(".overall-checkbox");
+    var delButton = section.querySelector(".del-button");
+    var swapButton = section.querySelector(".swap-button");
+
+    // 전체선택 체크박스 값 변경 시 이벤트
+    allCheckbox.onchange = function(){
+        // input 태그의 type="checkbox" 인 모든 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']");
+        for (let i = 0; i < inputs.length; i++) {
+            // 전체선택 체크박스 값과 동일하게 변경함
+            inputs[i].checked = allCheckbox.checked;
+        }
+        
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    // 일괄삭제 수행
+    delButton.onclick = function(){
+        // input 태그의 type="checkbox" 인 모든 노드 가져오기
+        var inputs = tbody.querySelectorAll("input[type='checkbox']");
+        for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].checked) {
+                inputs[i].parentElement.parentElement.remove();
+            }
+        }
+
+        console.log("inputs : " + inputs);
+        console.log("allCheckbox.value (Default:on) : " + allCheckbox.value);
+        console.log("allCheckbox.checked : " + allCheckbox.checked);
+        console.log("noticeList : " + noticeList);
+        console.log("tbody : " + tbody);
+        console.log("allCheckbox : " + allCheckbox);
+        console.log("delButton : " + delButton.value);
+        console.log("swapButton : " + swapButton.value);
+    };
+
+    swapButton.onclick = function(){
+    };
+});
+
+//Ex8-2 : 노드 삽입과 바꾸기 - insertAdjacentElement() 사용 (권장 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section8_2");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var upButton = section.querySelector(".up-button");
+    var downButton = section.querySelector(".down-button");
+
+    // 현재 노드 위치 저장
+    //var currentNode = tbodyNode.children[0]; // 아래와 같은 결과 (OLD 방식)
+    var currentNode = tbodyNode.firstElementChild;
+
+    // 아래로 자리 바꾸기
+    downButton.onclick = function(){
+        // 다음 노드 가져오기
+        var nextNode = currentNode.nextElementSibling;
+
+        // 다음 노드가 있는지 체크
+        if (nextNode == null) {
+            alert("더 이상 이동할 수 없습니다.");
+            return;
+        }
+
+        // 다음 노드 자리에 현재노드 끼워넣기
+        currentNode.insertAdjacentElement("beforebegin", nextNode);
+
+        console.log("currentNode : " + nextNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("upButton : " + upButton.value);
+        console.log("downButton : " + downButton.value);
+    };
+
+    // 위로 자리 바꾸기
+    upButton.onclick = function(){
+        // 이전 노드 가져오기
+        var prevNode = currentNode.previousElementSibling;
+
+        // 이전 노드가 있는지 체크
+        if (prevNode == null) {
+            alert("더 이상 이동할 수 없습니다.");
+            return;
+        }
+
+        // 이전 노드 자리에 현재노드 끼워넣기
+        currentNode.insertAdjacentElement("afterend", prevNode);
+
+        console.log("currentNode : " + prevNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("upButton : " + upButton.value);
+        console.log("downButton : " + downButton.value);
+    };
+});
+
+//Ex8-1 : 노드 삽입과 바꾸기 - insertBefore() 사용 (비 권장 방법)
+window.addEventListener("load", function(){
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section8_1");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var upButton = section.querySelector(".up-button");
+    var downButton = section.querySelector(".down-button");
+
+    // 현재 노드 위치 저장
+    //var currentNode = tbodyNode.children[0]; // 아래와 같은 결과 (OLD 방식)
+    var currentNode = tbodyNode.firstElementChild;
+
+    // 아래로 자리 바꾸기
+    downButton.onclick = function(){
+        // 다음 노드 가져오기
+        var nextNode = currentNode.nextElementSibling;
+
+        // 다음 노드가 있는지 체크
+        if (nextNode == null) {
+            alert("더 이상 이동할 수 없습니다.");
+            return;
+        }
+
+        // 다음 노드 임시 제거 (안해도 동작가능)
+        tbodyNode.removeChild(nextNode);
+
+        // 다음 노드 자리에 현재노드 끼워넣기
+        tbodyNode.insertBefore(nextNode, currentNode);
+
+        console.log("currentNode : " + nextNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("upButton : " + upButton.value);
+        console.log("downButton : " + downButton.value);
+    };
+
+    // 위로 자리 바꾸기
+    upButton.onclick = function(){
+        // 이전 노드 가져오기
+        var prevNode = currentNode.previousElementSibling;
+
+        // 이전 노드가 있는지 체크
+        if (prevNode == null) {
+            alert("더 이상 이동할 수 없습니다.");
+            return;
+        }
+
+        // 이전 노드 임시 제거 (안해도 동작가능)
+        tbodyNode.removeChild(currentNode);
+
+        // 이전 노드 자리에 현재노드 끼워넣기
+        tbodyNode.insertBefore(currentNode, prevNode);
+
+        console.log("currentNode : " + prevNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("upButton : " + upButton.value);
+        console.log("downButton : " + downButton.value);
+    };
+});
+
+//Ex7-3 : 노드 복제와 템플릿 태그 - Template 태그를 이용한 복제
+window.addEventListener("load", function(){
+
+    // Sample Data
+    var notices = [
+        {id:5, title:"퐈이야~~~", regDate:"2019-01-26", writerId:"newlec", hit:0},
+        {id:6, title:"나 좀 복제해줘~", regDate:"2019-01-26", writerId:"newlec", hit:17}
+    ];
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section7_3");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var cloneButton = section.querySelector(".clone-button");
+    var templateButton = section.querySelector(".template-button");
+
+    // Row 복제
+    cloneButton.onclick = function(){
+        // tbody 내의 첫번째 노드 가져오기 (둘다 가능)
+        //var trNode = noticeList.querySelector("tbody tr:first-child");
+        var trNode = noticeList.querySelector("tbody tr");
+        
+        // 노드 복제
+        var cloneNode = trNode.cloneNode(true);
+        var tds = cloneNode.querySelectorAll("td");
+        tds[0].innerText = notices[0].id; // .textContent 동일 기능
+        tds[1].innerHTML = '<a href="' + notices[0].id + '">' + notices[0].title + '</a>';
+        tds[2].textContent = notices[0].regDate;
+        tds[3].textContent = notices[0].writerId;
+        tds[4].textContent = notices[0].hit;
+
+        // tbody 노드의 끝에 복제노드 추가
+        tbodyNode.append(cloneNode);
+
+        console.log("cloneNode : " + cloneNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("cloneButton : " + cloneButton.value);
+        console.log("templateButton : " + templateButton.value);
+    };
+
+    // Row 복제 (Template 이용)
+    templateButton.onclick = function(){
+        // Template 노드 가져오기
+        var template = section.querySelector("template");
+        
+        // 노드 복제
+        var cloneNode = document.importNode(template.content, true);
+        var tds = cloneNode.querySelectorAll("td");
+        tds[0].innerText = notices[0].id; // .textContent 동일 기능
+        
+        //tds[1].innerHTML = '<a href="' + notices[0].id + '">' + notices[0].title + '</a>'; // 아래와 동일기능
+        var aNode = tds[1].children[0];
+        aNode.href = notices[0].id;
+        aNode.textContent = notices[0].title;
+
+        tds[2].textContent = notices[0].regDate;
+        tds[3].textContent = notices[0].writerId;
+        tds[4].textContent = notices[0].hit;
+
+        // tbody 노드의 끝에 복제노드 추가
+        tbodyNode.append(cloneNode);
+
+        console.log("cloneNode : " + cloneNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("cloneButton : " + cloneButton.value);
+        console.log("templateButton : " + templateButton.value);
+    };
+});
+
+//Ex7-2 : 노드 복제와 템플릿 태그 - Sample Data 대입
+window.addEventListener("load", function(){
+
+    // Sample Data
+    var notices = [
+        {id:5, title:"퐈이야~~~", regDate:"2019-01-26", writerId:"newlec", hit:0},
+        {id:6, title:"나 좀 복제해줘~", regDate:"2019-01-26", writerId:"newlec", hit:17}
+    ];
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section7_2");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var cloneButton = section.querySelector(".clone-button");
+    var templateButton = section.querySelector(".template-button");
+
+    // Row 복제
+    cloneButton.onclick = function(){
+        // tbody 내의 첫번째 노드 가져오기 (둘다 가능)
+        //var trNode = noticeList.querySelector("tbody tr:first-child");
+        var trNode = noticeList.querySelector("tbody tr");
+        
+        // 노드 복제
+        var cloneNode = trNode.cloneNode(true);
+        var tds = cloneNode.querySelectorAll("td");
+        tds[0].innerText = notices[0].id; // .textContent 동일 기능
+        tds[1].innerHTML = '<a href="' + notices[0].id + '">' + notices[0].title + '</a>';
+        tds[2].textContent = notices[0].regDate;
+        tds[3].textContent = notices[0].writerId;
+        tds[4].textContent = notices[0].hit;
+
+        // tbody 노드의 끝에 복제노드 추가
+        tbodyNode.append(cloneNode);
+
+        console.log("cloneNode : " + cloneNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("cloneButton : " + cloneButton.value);
+        console.log("templateButton : " + templateButton.value);
+    };
+
+    templateButton.onclick = function(){
+    };
+});
+
+//Ex7-1 : 노드 복제와 템플릿 태그 - 단순 ROW 복제
+window.addEventListener("load", function(){
+
+    // Sample Data
+    var notices = [
+        {id:5, title:"퐈이야~~~", regDate:"2019-01-26", writerId:"newlec", hit:0},
+        {id:6, title:"나 좀 복제해줘~", regDate:"2019-01-26", writerId:"newlec", hit:17}
+    ];
+
+    // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
+    var section = document.querySelector("#section7_1");
+    
+    // 지정범위의 엘리먼트 내의 class 이름으로 엘리먼트 찾기 (querySelector 는 .으로 시작하면 class | #으로 시작하면 id | 기본값은 Tag)
+    var noticeList = section.querySelector(".notice-list");
+    var tbodyNode = noticeList.querySelector("tbody");
+    var cloneButton = section.querySelector(".clone-button");
+    var templateButton = section.querySelector(".template-button");
+
+    // Row 복제
+    cloneButton.onclick = function(){
+        // tbody 내의 첫번째 노드 가져오기 (둘다 가능)
+        //var trNode = noticeList.querySelector("tbody tr:first-child");
+        var trNode = noticeList.querySelector("tbody tr");
+        
+        // 노드 복제
+        var cloneNode = trNode.cloneNode(true);
+
+        // tbody 노드의 끝에 복제노드 추가
+        tbodyNode.append(cloneNode);
+
+        console.log("cloneNode : " + cloneNode.textContent);
+        console.log("noticeList : " + noticeList);
+        console.log("tbodyNode : " + tbodyNode);
+        console.log("cloneButton : " + cloneButton.value);
+        console.log("templateButton : " + templateButton.value);
+    };
+
+    templateButton.onclick = function(){
+    };
+});
+
 //Ex6-4 : 노드조작 - 메뉴추가(createTextNode, Element) - HTML 태그 Node 추가/삭제 (약간 개선된 방법)
 window.addEventListener("load", function(){
 
@@ -443,7 +996,7 @@ window.addEventListener("load", function(){
     };
 });
 
-//Ex1 : getElementById() 테스트
+//Ex1-1 : getElementById() 테스트
 window.addEventListener("load", function(){
 
     // 문서 전체범위에서 id 속성값으로 엘리먼트 찾기 (id는 html 문서 전체에서 unique 해야함)
