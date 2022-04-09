@@ -16,6 +16,277 @@
     </nav>
     <hr />
 
+    <section id="section10_1">
+        <h1>Ex10-1 : 마우스 이벤트 객체 - 드래그 드랍 - draggable 속성 (크롬에서 안됨)</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+                position: relative;
+                overflow: hidden;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+            .dropzone{
+                width: 200px;
+                height: 200px;
+                border: 1px solid gray;
+            }
+        </style>
+        <div class="container">
+            <div class="box" draggable="true"></div>
+        </div>
+        <div class="dropzone"></div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section9_2">
+        <h1>Ex9-2 : 마우스 이벤트 객체 : [마우스 캡쳐링] 박스의 offset 영역 좌표 이용하기 (향상된 권장방법)</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+                position: relative;
+                overflow: hidden;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="status"></div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section9_1">
+        <h1>Ex9-1 : 마우스 이벤트 객체 : 박스의 offset 영역 좌표 이용하기 (컨테이너 좌표 이용)</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+                position: relative;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="status"></div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section8_1">
+        <h1>Ex8-1 : 마우스 이벤트 객체 : 여러개 박스 드래그 방식으로 박스 옮기기</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section7_2">
+        <h1>Ex7-2 : 마우스 이벤트 객체 : 드래그 방식으로 박스 옮기기 - Mouse Move/Down/Up + offsetX,offsetY</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box">
+
+            </div>
+        </div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section7_1">
+        <h1>Ex7-1 : 마우스 이벤트 객체 : 드래그 방식으로 박스 옮기기 - Mouse Move</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box">
+
+            </div>
+        </div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section6_1">
+        <h1>Ex6-1 : 마우스 이벤트 객체 : 마우스 좌표</h1>
+        <style>
+            .container{
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+            .box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+            }
+        </style>
+        <div class="container">
+            <div class="box">
+
+            </div>
+        </div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section5_1">
+        <h1>Ex5-1 : 이벤트 트리거</h1>
+        <style>
+            .file-button{
+                display: none;
+            }
+            .file-trigger-button{
+                background: green;
+                border: 1px solid lightgreen;
+                border-radius: 5px;
+                padding: 5px 10px;
+                color: #fff;
+                cursor: pointer;
+            }
+            .file-trigger-button:hover{
+                background: limegreen;
+            }
+        </style>
+        <div>
+            <input type="file" class="file-button" />
+            <span class="file-trigger-button">파일선택</span>
+        </div>
+        <br>
+    </section>
+    <hr />
+
+    <section id="section4_1">
+        <h1>Ex4-1 : 서로 다른 기능의 여러 버튼을 가진 화면에서 이벤트를 처리하는 방법</h1>
+        <table border="1" class="notice-list">
+            <thead>
+                <tr>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>작성일</td>
+                    <td>작성자</td>
+                    <td>조회수</td>
+                    <td>관리</td>
+                </tr>
+            </thead>
+            <tbody class="record-list">
+                <tr>
+                    <td>1</td>
+                    <td><a href="1">자바스크립트란..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>2</td>
+                    <td>
+                        <input type="button" class="sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="2">유투브에 끌려다니지 않으려고 했는데....ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td>
+                        <a class="sel-button" href="" >선택</a>
+                        <a class="edit-button" href="" >수정</a>
+                        <a class="del-button" href="" >삭제</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="3">기본기가 튼튼해야....</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>1</td>
+                    <td>
+                        <input type="button" class="button sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="4">근데 조회수가 ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td>
+                        <input type="button" class="sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <hr />    
+
     <section id="section3_1">
         <h1>Ex3-1 : 이벤트 버블링 멈추기</h1>
         <div class="img-list">
@@ -28,7 +299,7 @@
             <img class="current-img" src="images/img1.jpg" style="border:1px solid red;" />
         </div>
     </section>
-    <hr />    
+    <hr />
 
     <section id="section2_2">
         <h1>Ex2-2 : 이벤트 버블링을 이용해 사용자 이벤트 처리하기 - event Bubbling (효율적인 방법)</h1>
