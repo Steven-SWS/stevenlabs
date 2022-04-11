@@ -11,12 +11,12 @@ export default {
   data () {
     return {
       valueModel: 'South Korea',
-      htmlString: '<p style="color:red;">This is a red string</p>',
       title: 'World'
     }
   },
+
   updated () {
-    console.log(this.valueModel)
+    console.log(this.valueModel, this.title)
   }
 }
 </script>

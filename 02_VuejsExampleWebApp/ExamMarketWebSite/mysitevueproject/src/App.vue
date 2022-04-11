@@ -1,9 +1,15 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/databinding">DataBinding</router-link> |
-    <router-link to="/databinding-html">DataBindingHtml</router-link> |
-    <router-link to="/databinding-inputtext">DataBindingInputText</router-link> |
+    <router-link to="/">Home</router-link><br>
+    <router-link to="/databinding">DataBinding</router-link><br>
+    <router-link to="/databinding-html">DataBinding - Html</router-link><br>
+    <router-link to="/databinding-inputtext">DataBinding - InputText</router-link><br>
+    <router-link to="/databinding-inputnumber">DataBinding - InputNumber</router-link><br>
+    <router-link to="/databinding-textarea">DataBinding - Textarea</router-link><br>
+    <router-link to="/databinding-selectoption">DataBinding - SelectOption</router-link><br>
+    <router-link to="/databinding-inputcheckbox">DataBinding - InputCheckbox</router-link><br>
+    <router-link to="/databinding-inputradio">DataBinding - InputRadio</router-link><br>
+    <router-link to="/databinding-imagesrc">DataBinding - ImageSrc</router-link><br>
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>

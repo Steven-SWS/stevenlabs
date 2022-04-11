@@ -6,6 +6,12 @@ import Home from '../views/HomeView.vue'
 import DataBinding from '../views/DataBinding.vue'
 import DataBindingHtml from '../views/DataBindingHtml.vue'
 import DataBindingInputText from '../views/DataBindingInputText.vue'
+import DataBindingInputNumber from '../views/DataBindingInputNumber.vue'
+import DataBindingTextarea from '../views/DataBindingTextarea.vue'
+import DataBindingSelectOption from '../views/DataBindingSelectOption.vue'
+import DataBindingInputCheckbox from '../views/DataBindingInputCheckbox.vue'
+import DataBindingInputRadio from '../views/DataBindingInputRadio.vue'
+import DataBindingImageSrc from '../views/DataBindingImageSrc.vue'
 
 const routes = [
   {
@@ -27,6 +33,36 @@ const routes = [
     path: '/databinding-inputtext',
     name: 'DataBindingInputText',
     component: DataBindingInputText
+  },
+  {
+    path: '/databinding-inputnumber',
+    name: 'DataBindingInputNumber',
+    component: DataBindingInputNumber
+  },
+  {
+    path: '/databinding-textarea',
+    name: 'DataBindingTextarea',
+    component: DataBindingTextarea
+  },
+  {
+    path: '/databinding-selectoption',
+    name: 'DataBindingSelectOption',
+    component: DataBindingSelectOption
+  },
+  {
+    path: '/databinding-inputcheckbox',
+    name: 'DataBindingInputCheckbox',
+    component: DataBindingInputCheckbox
+  },
+  {
+    path: '/databinding-inputradio',
+    name: 'DataBindingInputRadio',
+    component: DataBindingInputRadio
+  },
+  {
+    path: '/databinding-imagesrc',
+    name: 'DataBindingImageSrc',
+    component: DataBindingImageSrc
   },
   {
     path: '/about',
