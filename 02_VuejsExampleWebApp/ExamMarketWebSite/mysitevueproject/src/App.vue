@@ -10,6 +10,9 @@
     <router-link to="/databinding-inputcheckbox">DataBinding - InputCheckbox</router-link><br>
     <router-link to="/databinding-inputradio">DataBinding - InputRadio</router-link><br>
     <router-link to="/databinding-imagesrc">DataBinding - ImageSrc</router-link><br>
+    <router-link to="/databinding-button">DataBinding - Button</router-link><br>
+    <router-link to="/databinding-class">DataBinding - Class</router-link><br>
+    <router-link to="/databinding-classarray">DataBinding - ClassArray</router-link><br>
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>

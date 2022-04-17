@@ -12,6 +12,9 @@ import DataBindingSelectOption from '../views/DataBindingSelectOption.vue'
 import DataBindingInputCheckbox from '../views/DataBindingInputCheckbox.vue'
 import DataBindingInputRadio from '../views/DataBindingInputRadio.vue'
 import DataBindingImageSrc from '../views/DataBindingImageSrc.vue'
+import DataBindingButton from '../views/DataBindingButton.vue'
+import DataBindingClass from '../views/DataBindingClass.vue'
+import DataBindingClassArray from '../views/DataBindingClassArray.vue'
 
 const routes = [
   {
@@ -63,6 +66,21 @@ const routes = [
     path: '/databinding-imagesrc',
     name: 'DataBindingImageSrc',
     component: DataBindingImageSrc
+  },
+  {
+    path: '/databinding-button',
+    name: 'DataBindingButton',
+    component: DataBindingButton
+  },
+  {
+    path: '/databinding-class',
+    name: 'DataBindingClass',
+    component: DataBindingClass
+  },
+  {
+    path: '/databinding-classarray',
+    name: 'DataBindingClassArray',
+    component: DataBindingClassArray
   },
   {
     path: '/about',
