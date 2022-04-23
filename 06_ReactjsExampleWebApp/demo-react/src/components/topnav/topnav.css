@@ -1,0 +1,97 @@
+/* screen - 2120_55582 */
+
+.nav {
+    align-items: center;
+    background-color: var(--main);
+    display: flex;
+    height: 60px;
+    width: 100%;
+    padding: 0 30px;
+    z-index: 1;
+    justify-content :space-between;
+  }
+  
+  .vm {
+    align-items: center;
+    display: flex;
+    height: 19px;
+    margin-top: 1.0px;
+    min-width: 620px;
+  }
+  
+  .icon_filter {
+    background-image: url(https://anima-uploads.s3.amazonaws.com/projects/624f93c5eca1b3cfb27bea77/releases/624f9419ae9cfc5f3e2583e3/img/icon-filter@2x.svg);
+    background-size: 100% 100%;
+    height: 16px;
+    margin-bottom: 1.0px;
+    width: 16px;
+  }
+  
+  .top-menu {
+    letter-spacing: 0;
+    margin-left: 30px;
+    min-height: 19px;
+    min-width: 100px;
+    text-align: center;
+  }
+  
+ 
+  .b_left {}
+  .b_right {
+    display: flex;
+  }
+  
+  .home {
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.0px;
+    min-width: 97px;
+  }
+  
+  .icon_apps {
+    height: 15px;
+    width: 15px;
+  }
+  
+  .text-1 {
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-left: 12px;
+    min-height: 20px;
+    min-width: 6px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .frame-773 {
+    align-items: center;
+    display: flex;
+    height: 20px;
+    margin-left: 12px;
+    min-width: 52px;
+  }
+  
+  .aims {
+    letter-spacing: 0;
+    line-height: 20px;
+    min-height: 20px;
+    min-width: 36px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .icon_arrow {
+    height: 8px;
+    margin-bottom: 1.0px;
+    margin-left: 8px;
+    width: 8px;
+  }
+  
+  .ellipse-24 {
+    background-color: var(--white);
+    border-radius: 14px;
+    height: 28px;
+    margin-left: 24px;
+    width: 28px;
+  }
+  
