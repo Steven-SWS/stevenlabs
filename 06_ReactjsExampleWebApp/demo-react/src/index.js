@@ -14,6 +14,7 @@ import './assets/css/theme.css'
 import './assets/css/index.css'
 import './assets/css/styleguide.css'
 import './assets/css/globals.css'
+import './assets/css/bGlobals.scss'
 
 // import Layout from './components/layout/Layout'
 import LayoutGauss from './components/layout/LayoutGauss'
@@ -24,13 +25,13 @@ const store = createStore(
   rootReducer
 )
 
-document.title = 'Tua CRM'
+// document.title = ''
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <LayoutGauss />
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+    <LayoutGauss />
+    {/* </React.StrictMode> */}
   </Provider>,
   document.getElementById('root')
 );

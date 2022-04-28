@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import './topnav.css'
 
@@ -19,16 +19,19 @@ const Topnav = () => {
     { to: '/customers', name: 'Process History' },
   ]
   const VMPageMenus = [
-    { to: '/', name: 'vm Create Recipe' },
-    { to: '/customers', name: 'vm Recipe Verification' },
-    { to: '/', name: 'vm Recipe Management' },
-    { to: '/customers', name: 'vm Process History' },
+    { to: '/vm/dashboard', name: 'Dashboard' },
+    { to: '/vm/dataMigration', name: 'Data Migration' },
+    { to: '/vm/createModel', name: 'Create Model' },
+    { to: '/vm/modelManagement', name: 'Model Management' },
+    { to: '/vm/prediction', name: 'Prediction' },
+
   ]
   const CAPageMenus = [
-    { to: '/', name: 'ca Create Recipe' },
-    { to: '/customers', name: 'ca Recipe Verification' },
-    { to: '/', name: 'ca Recipe Management' },
-    { to: '/customers', name: 'ca Process History' },
+    { to: '/ca/dashboardCA', name: 'Dashboard' },
+    { to: '/ca/responseAnomaly', name: 'Response Anomaly' },
+    { to: '/ca/sourceAnomaly', name: 'Source Anomaly' },
+    { to: '/ca/metrologyAnomaly', name: 'Metrology Anomaly' },
+    { to: '/ca/historyAnomaly', name: 'History Anomaly' },
   ]
 
   const [selectedPage, setSelectedPage] = useState()
@@ -77,21 +80,20 @@ const Topnav = () => {
   // },[])
 
   return (
-    <div class="nav">
-      <div class="vm b_left">
-        <div class="icon_filter" onClick=""></div>
+    <div className="nav">
+      <div className="vm b_left">
+        <div className="icon_filter" ></div>
         {menuTag(selectedMenu)}
 
       </div>
-      <div class="b_right">
-        <div class="home">
+      <div className="b_right">
+        <div className="home">
           <img
-            class="icon_apps"
-            onClick=""
+            className="icon_apps"
             src="https://anima-uploads.s3.amazonaws.com/projects/624f93c5eca1b3cfb27bea77/releases/624f9419ae9cfc5f3e2583e3/img/icon-apps@2x.svg"
           />
-          <div class="text-1 opensans-normal-french-gray-15px">/</div>
-          <div class="frame-773" onclick="">
+          <div className="text-1 opensans-normal-french-gray-15px">/</div>
+          <div className="frame-773" >
 
             <Dropdown overlay={appMenus} trigger={['click']}>
               <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
@@ -102,7 +104,7 @@ const Topnav = () => {
 
           </div>
         </div>
-        <div class="ellipse-24" onClick=""></div>
+        <div className="ellipse-24" ></div>
       </div>
     </div>
   )
