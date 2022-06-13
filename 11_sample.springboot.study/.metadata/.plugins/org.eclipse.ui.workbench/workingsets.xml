@@ -2,5 +2,19 @@
 <workingSetManager>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1650982872952_0" label="Java Main Sources" name="Java Main Sources"/>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1650982872952_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1655091812296_4" label="Springboot-JPA" name="Springboot-JPA">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/AroundHub" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1655091850065_5" label="Native-JPA" name="Native-JPA">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/basic_jpa" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/entitymanager_transaction" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/entity_manager_factory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/get_reference_example" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/id_generation" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/join_one_to_one" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/persistence_context" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/simple_example" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/value" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1650982874735_2" label="Window Working Set" name="Aggregate for window 1650982874735"/>
 </workingSetManager>
